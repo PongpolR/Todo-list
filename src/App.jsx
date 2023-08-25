@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import TodoForm from "./components/TodoForm";
 import CompletedList from "./components/CompletedList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Navbar />
       <Routes>
         <Route path="/" element={<TodoForm />} />
         <Route path="/completed-list" element={<CompletedList />} />

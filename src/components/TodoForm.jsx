@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import AddForm from "./AddForm";
 import List from "./List";
+import "../styles/Form.css";
 export default function TodoForm(props) {
   const { completedList } = props;
   // console.log(completedList);
@@ -75,6 +76,7 @@ export default function TodoForm(props) {
         text: input,
         id: Math.floor(Math.random() * 1000),
         check: false,
+        date: new Date().toLocaleDateString(),
       };
       setTask(newTask);
       setList([newTask, ...list]);
@@ -130,9 +132,10 @@ export default function TodoForm(props) {
   }
 
   return (
-    <>
+    <div className="container">
       {!completedList ? (
         <>
+          <h1 className="title-text">To-Do List</h1>
           <AddForm
             addList={addList}
             input={input}
@@ -155,7 +158,7 @@ export default function TodoForm(props) {
         </>
       ) : (
         <>
-          {listComplete.length !== 0 &&
+          {listComplete.length !== 0 ? (
             listComplete.map((data, id) => {
               return (
                 <List
@@ -166,9 +169,12 @@ export default function TodoForm(props) {
                   checkTask={checkTask}
                 />
               );
-            })}
+            })
+          ) : (
+            <div>No task complete</div>
+          )}
         </>
       )}
-    </>
+    </div>
   );
 }

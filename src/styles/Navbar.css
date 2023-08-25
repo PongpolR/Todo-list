@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #191739;
+  padding: 2rem;
+}
+
+.header {
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: #e5e219;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu a {
+  margin-left: 2rem;
+}

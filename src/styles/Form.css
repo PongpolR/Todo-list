@@ -1,0 +1,94 @@
+.container {
+  max-width: 600px;
+  max-height: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  scroll-behavior: smooth;
+}
+
+.title-text {
+  color: #191739;
+}
+
+.form-input {
+  display: flex;
+  margin: 1rem;
+}
+
+.text-input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #eaeaea;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 18px;
+}
+
+.text-input:focus {
+  outline: none;
+}
+
+.submit-btn {
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #191739;
+  color: #eee;
+  cursor: pointer;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 1.2rem;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #e5eff7;
+  margin: 1rem;
+}
+
+.crud-btn {
+  display: flex;
+  padding: 0 1rem 0 3rem;
+}
+
+.crud-btn button {
+  padding: 0 1.2rem;
+  margin-left: 1rem;
+}
+
+.checkbox {
+  margin-left: 1rem;
+  margin-right: -15rem;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.delete-icon {
+  margin-right: 1rem;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  padding: 0 1rem;
+}
+
+.text-des {
+  display: flex;
+}
+
+.text-date {
+  font-size: 0.8rem;
+}
