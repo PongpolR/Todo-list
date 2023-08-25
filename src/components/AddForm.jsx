@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 export default function AddForm(props) {
-  const { addList, input, setInput } = props;
+  const { addList, input, setInput, editTask, edit } = props;
 
   return (
     <>
@@ -10,7 +10,7 @@ export default function AddForm(props) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type="submit">Add</button>
+        <button type="submit">{!edit ? "Add" : "Update"}</button>
       </form>
     </>
   );
