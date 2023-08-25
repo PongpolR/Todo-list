@@ -2,38 +2,70 @@
 import { useState, useEffect } from "react";
 import AddForm from "./AddForm";
 import List from "./List";
-export default function TodoForm() {
+export default function TodoForm(props) {
+  const { completedList } = props;
+  // console.log(completedList);
+
   const [input, setInput] = useState("");
   const [task, setTask] = useState();
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState("");
-  // const []
   const [list, setList] = useState(
     JSON.parse(localStorage.getItem("list")) || []
   );
+  const [listComplete, setListComplete] = useState(
+    JSON.parse(localStorage.getItem("listComplete")) || []
+  );
 
   useEffect(() => {
-    // call when state task re render
     localStorage.setItem("list", JSON.stringify(list));
-  }, [list]);
+    localStorage.setItem("listComplete", JSON.stringify(listComplete));
+  }, [list, listComplete]);
+
+  function editItem(list) {
+    let editList = list.map((item) => {
+      if (item.id == parseInt(editId))
+        return (item = {
+          ...item,
+          text: input,
+        });
+      return (item = {
+        ...item,
+      });
+    });
+    return editList;
+  }
 
   function addList(e) {
     e.preventDefault();
     if (edit) {
-      console.log("yes");
-      let item = list.map((item) => {
-        if (item.id == parseInt(editId))
-          return (item = {
-            ...item,
-            text: input,
-          });
-        return (item = {
-          ...item,
-        });
-      });
+      let item = editItem(list);
+      let itemComplete = editItem(listComplete);
+      // let item = list.map((item) => {
+      //   if (item.id == parseInt(editId))
+      //     return (item = {
+      //       ...item,
+      //       text: input,
+      //     });
+      //   return (item = {
+      //     ...item,
+      //   });
+      // });
+      // let itemComplete = listComplete.map((item) => {
+      //   if (item.id == parseInt(editId))
+      //     return (item = {
+      //       ...item,
+      //       text: input,
+      //     });
+      //   return (item = {
+      //     ...item,
+      //   });
+      // });
       console.log(input);
       console.log(item);
+      console.log(itemComplete);
       setList(item);
+      setListComplete(itemComplete);
       setEdit(false);
       setInput("");
     } else if (!input) {
@@ -52,7 +84,9 @@ export default function TodoForm() {
 
   function deleteTask(id) {
     const updateList = list.filter((item) => item.id !== id);
+    const updateListComplete = listComplete.filter((item) => item.id !== id);
     setList(updateList);
+    setListComplete(updateListComplete);
   }
 
   function editTask(id) {
@@ -74,36 +108,67 @@ export default function TodoForm() {
           ...item,
           check: !checked,
         };
+        if (item.check == true) {
+          setListComplete([item, ...listComplete]);
+        } else if (item.check == false) {
+          let checkId = listComplete.filter((item) => {
+            return item.id !== id;
+          });
+          console.log(checkId);
+          setListComplete(checkId);
+        }
       }
       return (item = {
         ...item,
       });
     });
+
     setList(task);
+
     console.log(task);
+    console.log(listComplete);
   }
 
   return (
     <>
-      <AddForm
-        addList={addList}
-        input={input}
-        setInput={setInput}
-        editTask={editTask}
-        edit={edit}
-      />
-      {list.length !== 0 &&
-        list.map((data, id) => {
-          return (
-            <List
-              key={id}
-              data={data}
-              deleteTask={deleteTask}
-              editTask={editTask}
-              checkTask={checkTask}
-            />
-          );
-        })}
+      {!completedList ? (
+        <>
+          <AddForm
+            addList={addList}
+            input={input}
+            setInput={setInput}
+            editTask={editTask}
+            edit={edit}
+          />
+          {list.length !== 0 &&
+            list.map((data, id) => {
+              return (
+                <List
+                  key={id}
+                  data={data}
+                  deleteTask={deleteTask}
+                  editTask={editTask}
+                  checkTask={checkTask}
+                />
+              );
+            })}
+        </>
+      ) : (
+        <>
+          {listComplete.length !== 0 &&
+            listComplete.map((data, id) => {
+              return (
+                <List
+                  key={id}
+                  data={data}
+                  deleteTask={deleteTask}
+                  editTask={editTask}
+                  checkTask={checkTask}
+                />
+              );
+            })}
+        </>
+      )}
     </>
   );
 }

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 export default function AddForm(props) {
-  const { addList, input, setInput, editTask, edit } = props;
+  const { addList, input, setInput, edit } = props;
 
   return (
     <>
