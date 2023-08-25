@@ -7,6 +7,7 @@ export default function TodoForm() {
   const [task, setTask] = useState();
   const [edit, setEdit] = useState(false);
   const [editId, setEditId] = useState("");
+  // const []
   const [list, setList] = useState(
     JSON.parse(localStorage.getItem("list")) || []
   );
@@ -64,6 +65,24 @@ export default function TodoForm() {
     console.log(edit);
   }
 
+  function checkTask(id) {
+    // console.log(id);
+    let task = list.map((item) => {
+      if (item.id === id) {
+        let checked = item.check;
+        item = {
+          ...item,
+          check: !checked,
+        };
+      }
+      return (item = {
+        ...item,
+      });
+    });
+    setList(task);
+    console.log(task);
+  }
+
   return (
     <>
       <AddForm
@@ -81,6 +100,7 @@ export default function TodoForm() {
               data={data}
               deleteTask={deleteTask}
               editTask={editTask}
+              checkTask={checkTask}
             />
           );
         })}
