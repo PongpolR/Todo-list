@@ -29,4 +29,4 @@ Run project
 
 Deploy project ด้วย Netlify
 
-- https://tata-pongpol-todo-list.netlify.app/completed-list
+- https://tata-pongpol-todo-list.netlify.app/
