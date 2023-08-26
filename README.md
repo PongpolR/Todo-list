@@ -1,8 +1,32 @@
-# React + Vite
+# To-Do List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web application สำหรับเพิ่มรายการที่ต้องการทำ
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install project with npm
+
+```bash
+  git clone https://github.com/PongpolR/Todo-list
+  cd Todo-list
+  npm install (หรือ npm install --force)
+```
+
+Run project
+
+```bash
+  npm run dev
+```
+
+## Features
+
+- สามารถเพิ่ม/ลบ/แก้ไข รายการได้
+- เมื่อ refresh page หรือเปิดปิดเว็บไซต์ใหม่ ข้อมูลที่ค้างไว้ก่อนหน้าไม่หาย
+- แต่ละรายการแสดงวันที่และเวลาที่เพิ่มรายการ
+- มีหน้าแสดงรายการที่ทำเสร็จ
+
+## Deploy
+
+Deploy project ด้วย Netlify
+
+- https://tata-pongpol-todo-list.netlify.app/completed-list
