@@ -1,6 +1,8 @@
 # To-Do List
 
-Web application สำหรับเพิ่มรายการที่ต้องการทำ
+Web application สำหรับเพิ่มรายการที่ต้องการทำ 
+
+(เขียนด้วยภาษา javascript โดยใช้ library react)
 
 ## Installation
 
