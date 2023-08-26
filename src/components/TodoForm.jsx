@@ -37,34 +37,22 @@ export default function TodoForm(props) {
     return editList;
   }
 
+  function checkTime(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+
   function addList(e) {
     e.preventDefault();
     if (edit) {
       let item = editItem(list);
       let itemComplete = editItem(listComplete);
-      // let item = list.map((item) => {
-      //   if (item.id == parseInt(editId))
-      //     return (item = {
-      //       ...item,
-      //       text: input,
-      //     });
-      //   return (item = {
-      //     ...item,
-      //   });
-      // });
-      // let itemComplete = listComplete.map((item) => {
-      //   if (item.id == parseInt(editId))
-      //     return (item = {
-      //       ...item,
-      //       text: input,
-      //     });
-      //   return (item = {
-      //     ...item,
-      //   });
-      // });
-      console.log(input);
-      console.log(item);
-      console.log(itemComplete);
+
+      // console.log(input);
+      // console.log(item);
+      // console.log(itemComplete);
       setList(item);
       setListComplete(itemComplete);
       setEdit(false);
@@ -72,11 +60,16 @@ export default function TodoForm(props) {
     } else if (!input) {
       alert("type your task");
     } else {
+      let date = new Date();
+      let hour = date.getHours();
+      let min = date.getMinutes();
+      hour = checkTime(hour);
+      min = checkTime(min);
       let newTask = {
         text: input,
         id: Math.floor(Math.random() * 1000),
         check: false,
-        date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleDateString() + " " + hour + ":" + min,
       };
       setTask(newTask);
       setList([newTask, ...list]);
@@ -158,6 +151,7 @@ export default function TodoForm(props) {
         </>
       ) : (
         <>
+          <h1 className="title-text">Completed</h1>
           {listComplete.length !== 0 ? (
             listComplete.map((data, id) => {
               return (
@@ -167,6 +161,7 @@ export default function TodoForm(props) {
                   deleteTask={deleteTask}
                   editTask={editTask}
                   checkTask={checkTask}
+                  completeList={completedList}
                 />
               );
             })

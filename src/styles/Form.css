@@ -65,6 +65,8 @@
 .checkbox {
   margin-left: 1rem;
   margin-right: -15rem;
+  width: 20px;
+  accent-color: #0f8637;
 }
 
 .icon {
